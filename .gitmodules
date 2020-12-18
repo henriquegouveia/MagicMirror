@@ -1,0 +1,6 @@
+[submodule "modules/MMM-AVStock"]
+	path = modules/MMM-AVStock
+	url = https://github.com/lavolp3/MMM-AVStock.git
+[submodule "modules/MMM-uber"]
+	path = modules/MMM-uber
+	url = https://github.com/kyle-kelly/MMM-uber.git
