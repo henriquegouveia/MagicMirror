@@ -1,0 +1,129 @@
+/* Magic Mirror Config Sample
+ *
+ * By Michael Teeuw https://michaelteeuw.nl
+ * MIT Licensed.
+ *
+ * For more information on how you can configure this file
+ * See https://github.com/MichMich/MagicMirror#configuration
+ *
+ */
+
+var config = {
+	address: "localhost", 	// Address to listen on, can be:
+							// - "localhost", "127.0.0.1", "::1" to listen on loopback interface
+							// - another specific IPv4/6 to listen on a specific interface
+							// - "0.0.0.0", "::" to listen on any interface
+							// Default, when address config is left out or empty, is "localhost"
+	port: 8080,
+	basePath: "/", 	// The URL path where MagicMirror is hosted. If you are using a Reverse proxy
+					// you must set the sub path here. basePath must end with a /
+	ipWhitelist: ["127.0.0.1", "::ffff:127.0.0.1", "::1"], 	// Set [] to allow all IP addresses
+															// or add a specific IPv4 of 192.168.1.5 :
+															// ["127.0.0.1", "::ffff:127.0.0.1", "::1", "::ffff:192.168.1.5"],
+															// or IPv4 range of 192.168.3.0 --> 192.168.3.15 use CIDR format :
+															// ["127.0.0.1", "::ffff:127.0.0.1", "::1", "::ffff:192.168.3.0/28"],
+
+	useHttps: false, 		// Support HTTPS or not, default "false" will use HTTP
+	httpsPrivateKey: "", 	// HTTPS private key path, only require when useHttps is true
+	httpsCertificate: "", 	// HTTPS Certificate path, only require when useHttps is true
+
+	language: "pt",
+	logLevel: ["INFO", "LOG", "WARN", "ERROR"],
+	timeFormat: 24,
+	units: "metric",
+	// serverOnly:  true/false/"local" ,
+	// local for armv6l processors, default
+	//   starts serveronly and then starts chrome browser
+	// false, default for all NON-armv6l devices
+	// true, force serveronly mode, because you want to.. no UI on this device
+
+	modules: [
+		{
+			module: "alert",
+		},
+		{
+			module: "updatenotification",
+			position: "top_bar"
+		},
+		{
+			module: "clock",
+			position: "top_left"
+		},
+		{
+			module: 'MMM-uber',
+			position: 'top_center',
+			header: 'Uber (DC)',
+			config: {
+				lat: -20.530100,  // use your exact pickup loaction
+				lng: -47.368100, // use your exact pickup loaction
+				uberServerToken: 'JA.VUNmGAAAAAAAEgASAAAABwAIAAwAAAAAAAAAEgAAAAAAAAH4AAAAFAAAAAAADgAQAAQAAAAIAAwAAAAOAAAAzAAAABwAAAAEAAAAEAAAAEevGIIH2IEGduxEn2nLTcCnAAAA46er8cAx9iJqfKtFJ4i-XGD2qUyAL8LBq8Oti5MDkfILMvam-gJs0rIc2sX-HI_WAkLX6_YkofkiNPqi-HBgpi1zNkLZYRx4QT4gnVzndEHIzoUWhtwS9Tv0rRYCUq6Fe_SXGuaRgLItKHLCNL1Yrgnd2oehk1atNf7rkctO7oEvxR2KrXRJhb87NaFHWQ6GS72FsvtpbxRg4FDhlQz_BtPDdafjZFEADAAAAPUbuTD20Ol7HnPZaSQAAABiMGQ4NTgwMy0zOGEwLTQyYjMtODA2ZS03YTRjZjhlMTk2ZWU',
+			}
+		},
+		{
+    		module: "MMM-GoogleAssistant",
+    		position: "top_left",
+    		config: {
+        		maxWidth: "100%",
+        		header: "",
+    			publishKey: 'sub-c-885002c0-4168-11eb-ae10-b69578166507',
+    			subscribeKey: 'pub-c-3fdc8285-9164-4b22-94c0-3ec87af1b766',
+    			updateDelay: 500
+    		}
+		},
+		{
+			module: "currentweather",
+			position: "top_right",
+			config: {
+				location: "Franca, BR",
+				locationID: "3463011", //ID from http://bulk.openweathermap.org/sample/city.list.json.gz; unzip the gz file and find your city
+				appid: "440587f3fa7ec5f23e23cfcbed36aa26",
+				showWindDirection: false,
+				showPeriod: false,
+				useBeaufort: false,
+				roundTemp: true
+			}
+		},
+		{
+			module: "weatherforecast",
+			position: "top_right",
+			header: "Weather Forecast",
+			config: {
+				location: "Franca, BR",
+				locationID: "3463011", //ID from http://bulk.openweathermap.org/sample/city.list.json.gz; unzip the gz file and find your city
+				appid: "e0d871c75e27cebf384f4eae7f14ebf1"
+			}
+		},
+		{
+  			module: "MMM-AVStock",
+  			position: "middle_center",
+  			config: {
+    			apiKey : "85GYIPWT6CAXDQ0G",
+    			symbols : ["ABEV3.SA","AZUL4.SA",  "HCRI11.SA", "HGBS11.SA", "HGLG11.SA", "ITSA4.SA", "ITUB4.SA", "KNRI11.SA", "LREN3.SA",  "LVBI11.SA", "MGLU3.SA", "MXRF11.SA", "OUJP11.SA", "RBRP11.SA", "SHPH11.SA", "TSLA", "VISC11.SA", "XPLG11.SA", "XPML11.SA",],
+  				mode: "grid",
+  				direction: "column",
+  				showChart: false,
+  				debug: true
+  			}
+		},
+		{
+			module: "newsfeed",
+			position: "bottom_bar",
+			config: {
+				feeds: [
+					{
+						title: "Últimas Notícias",
+						url: "https://www.noticiasaominuto.com.br/rss/ultima-hora"
+					}
+				],
+				showSourceTitle: true,
+				showPublishDate: false,
+				broadcastNewsFeeds: true,
+				broadcastNewsUpdates: true,
+				ignoreOldItems: true
+			}
+		},
+	]
+};
+
+/*************** DO NOT EDIT THE LINE BELOW ***************/
+if (typeof module !== "undefined") {module.exports = config;}
