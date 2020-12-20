@@ -106,6 +106,16 @@ var config = {
   			}
 		},
 		{
+  			module: "MMM-NowPlayingOnSpotify",
+			position: "bottom_left",
+  			config: {
+    			clientID: "b8474970ae6f4e92bbe61887a5feaef5",
+    			clientSecret: "a109fe01b19840de9e3505abc75dbcdb",
+    			accessToken: "BQAs5WgULI_LZncruRAS29L4oA1XQ1SZlSNf1nrlC1-yvQl37bbaOoC9iVCewhwmkwTM0c2dmLGveWB4TPjbegpeG5Fs6iV5mFcwsFVz-_IMGfzxlVbkyFJslUCGavJmkYJdR22NHPWO9ibkpvlIcrU",
+    			refreshToken: "AQBgsd7R3c-iIX583UAIL73GxuyrauSHYz8rUS2bqMZzpqt-4QFKV8PUcPz0PhjzKYMzt7bwu3VPehjGtK-kybIZfVFjO--JesEkW4pZtLRd8Ldf2SKfkyLe_K7YRkxaqLw"
+  			}
+		},
+		{
 			module: "newsfeed",
 			position: "bottom_bar",
 			config: {

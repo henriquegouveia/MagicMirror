@@ -4,3 +4,6 @@
 [submodule "modules/MMM-uber"]
 	path = modules/MMM-uber
 	url = https://github.com/kyle-kelly/MMM-uber.git
+[submodule "modules/MMM-NowPlayingOnSpotify"]
+	path = modules/MMM-NowPlayingOnSpotify
+	url = https://github.com/raywo/MMM-NowPlayingOnSpotify.git
