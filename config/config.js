@@ -17,8 +17,7 @@ var config = {
 	port: 8080,
 	basePath: "/", 	// The URL path where MagicMirror is hosted. If you are using a Reverse proxy
 					// you must set the sub path here. basePath must end with a /
-	ipWhitelist: [], 	// Set [] to allow all IP addresses
-																												// or add a specific IPv4 of 192.168.1.5 :
+	ipWhitelist: ['192.168.0.100/24', "127.0.0.1"], // Set [] to allow all IP addresses
 																												// ["127.0.0.1", "::ffff:127.0.0.1", "::1", "::ffff:192.168.1.5"],
 																												// or IPv4 range of 192.168.3.0 --> 192.168.3.15 use CIDR format :
 																												// ["127.0.0.1", "::ffff:127.0.0.1", "::1", "::ffff:192.168.3.0/28"],
@@ -97,13 +96,16 @@ var config = {
   			module: "MMM-AVStock",
   			position: "middle_center",
   			config: {
-    			apiKey : "85GYIPWT6CAXDQ0G",
-    			symbols : ["ABEV3.SA","AZUL4.SA",  "HCRI11.SA", "HGBS11.SA", "HGLG11.SA", "ITSA4.SA", "ITUB4.SA", "KNRI11.SA", "LREN3.SA",  "LVBI11.SA", "MGLU3.SA", "MXRF11.SA", "OUJP11.SA", "RBRP11.SA", "SHPH11.SA", "TSLA", "VISC11.SA", "XPLG11.SA", "XPML11.SA",],
+    				apiKey : "85GYIPWT6CAXDQ0G",
+    				symbols : ["ABEV3.SA","AZUL4.SA",  "HCRI11.SA", "HGBS11.SA", "HGLG11.SA", "ITSA4.SA", "ITUB4.SA", "KNRI11.SA", "LREN3.SA",  "LVBI11.SA", "MGLU3.SA", "MXRF11.SA", "OUJP11.SA", "RBRP11.SA", "SHPH11.SA", "TSLA", "VISC11.SA", "XPLG11.SA", "XPML11.SA",],
+  				purchasePrice : [13.76, 25.97, 366.00, 249.57, 169.62, 9.39, 26.30, 153.87, 46.59, 115.79, 19.97, 10.87, 102.58, 92.19, 940.00, 106.90, 112.85, 140.49, 112.80],
+    				showPurchasePrices: true,
+        			showPerformance2Purchase: true,
   				mode: "grid",
-  				direction: "column",
-  				showChart: false,
-  				debug: true
-  			}
+        			showChart: false,
+        			showVolume: false,
+  				debug: true		
+	  		}
 		},
 		{
   			module: "MMM-NowPlayingOnSpotify",
@@ -135,7 +137,7 @@ var config = {
 		{
 		    module: 'MMM-Remote-Control',
 		    // uncomment the following line to show the URL of the remote control on the mirror
-		    position: 'bottom_right',
+		    // position: 'bottom_right',
 		    // you can hide this module afterwards from the remote control itself
 		    config: {
 		        customCommand: {},  // Optional, See "Using Custom Commands" below
